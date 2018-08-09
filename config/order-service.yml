@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: order-service
+  security:
+    user:
+      name: admin
+      password: password
+
+
+server:
+  port: 9902
+
+ribbon:
+  eager-load:
+    enabled: true
+    clients: product-service

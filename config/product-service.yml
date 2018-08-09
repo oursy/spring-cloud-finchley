@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: product-service
+  security:
+    user:
+      name: admin
+      password: password
+
+
+server:
+  port: 9901
+

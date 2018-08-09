@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: sba-service
+  security:
+    user:
+      name: admin
+      password: password
+  cloud:
+    config:
+      uri: http://localhost:8888
+      username: ${spring.security.user.name}
+      password: ${spring.security.user.password}

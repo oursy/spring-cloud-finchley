@@ -1,0 +1,47 @@
+registry:
+  username: eureka
+  password: password
+  port: 8010
+
+spring:
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: file:./config/
+  security:
+    user:
+      name: admin
+      password: password
+  application:
+    name: configserver
+server:
+  port: 8888
+  compression:
+    enabled: true
+    mime-types: text/html,text/xml,text/plain,text/css, application/javascript, application/json
+    min-response-size: 1024
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: when_authorized
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVICE_URL:http://${registry.username}:${registry.password}@localhost:${registry.port}}/eureka/
+
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}-${server.port}-${random.value}
+    metadata-map:
+      user.name: ${spring.security.user.name}
+      user.password: ${spring.security.user.password}

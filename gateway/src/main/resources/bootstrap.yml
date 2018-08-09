@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: gateway
+  cloud:
+    config:
+      uri: http://localhost:8888
+      username: ${spring.security.user.name}
+      password: ${spring.security.user.password}
+  security:
+    user:
+      name: admin
+      password: password
+server:
+  port: 81

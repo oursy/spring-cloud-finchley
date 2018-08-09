@@ -1,0 +1,32 @@
+spring:
+  security:
+    user:
+      name: eureka
+      password: password
+  application:
+    name: erueka-server
+
+eureka:
+  environment: AAA-Environment
+  datacenter: AAA-DataCenter
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVER_URL:http://${spring.security.user.name}:${spring.security.user.password}@localhost:${server.port}}/eureka/
+    fetch-registry: false
+    register-with-eureka: false
+  instance:
+    appname: eureka-server
+    instance-id: ${spring.application.name}-${server.port}-${random.value}
+    prefer-ip-address: true
+
+server:
+  port: 8010
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+  endpoint:
+    health:
+      show-details: when_authorized

@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: sba-service
+  security:
+    user:
+      name: admin
+      password: password
+  boot:
+    admin:
+      discovery:
+        ignored-services: sba
+
+
+server:
+  port: 9999
+
